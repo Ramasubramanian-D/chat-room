@@ -1,0 +1,44 @@
+.parent {
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    border: 2px solid black;
+}
+.content {
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+    height: 70%;
+    background-color: aliceblue;
+}
+.input {
+    width: 90%;
+    margin: auto;
+    padding-top: 5px; 
+}
+#out {
+    padding: 20px 0px 5px 8px;
+    text-align: left;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    overflow-y: scroll;
+    height: 90%;
+}
+#send {
+    width: 100%;
+    background-color: cadetblue;
+    border: 1px solid cadetblue;
+    color: white;
+    padding: 10px 15px 10px 15px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+#name,#message {
+    width: 100%;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+strong {
+    color: darkslategray;
+}
