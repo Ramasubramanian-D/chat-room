@@ -4,6 +4,7 @@
         <link rel="stylesheet" type="text/css" href="/main.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
     </head>
@@ -13,11 +14,20 @@
             <div id="typing"></div>
         </div>
         <div class="input">
-            <input id="name" type="text" placeholder="Name">
-            <br/>
-            <input id="message" type="text" placeholder="Message" >
-            <br/>
-            <button id="send">Send</button>
+            <div class="row">
+                <div class="col s10" style="text-align:left;">
+                    <input id="name" type="text" placeholder="Name">
+                    <br/>
+                    <textarea class="materialize-textarea" id="message" placeholder="Message" ></textarea>
+                    <br/>
+                </div>
+                <div class="col s1">
+                        <a id="send" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">send</i></a>
+                </div>
+                <div class="col s1">
+                    <a id="send" class="btn-floating btn-flat btn-large waves-effect waves-light" style="background-color:transparent;border:none;"><i class="material-icons">more_vert</i></a>
+                </div>
+            </div>
         </div>
         <script src="/main.js"></script>
     </body>

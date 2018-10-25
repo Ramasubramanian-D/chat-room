@@ -1,14 +1,8 @@
-.parent {
-    width: 40%;
-    margin: auto;
-    text-align: center;
-    border: 2px solid black;
-}
 .content {
-    width: 95%;
+    width: 100%;
     margin: auto;
     margin-top: 0;
-    height: 70%;
+    height: 75%;
     background-color: aliceblue;
 }
 .input {
@@ -17,7 +11,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 10px 0px 10px;
     background-color: lavender;
     margin:0;
     text-align: center;
@@ -29,7 +23,6 @@
     font-family: 'Open Sans', sans-serif;
     height: 90%;
     overflow-y: scroll;
-
 }
 #typing {
     height: 10%;
@@ -46,20 +39,24 @@
     left: 52%;
 }
 #send {
-    width: 30%;
     background-color: cadetblue;
     border: 1px solid cadetblue;
     color: white;
-    padding: 10px 15px 10px 15px;
     font-size: 18px;
     text-align: center;
     margin-bottom: 5px;
 }
 #name,#message {
-    width: 50%;
+    width: 93%;
     font-size: 17px;
     margin-bottom: 5px;
+    background-color: white;
+    padding: 2px 7px 2px 7px;
+    border-radius: 7px;
 }
 strong {
     color: darkslategray;
+}
+textarea {
+    resize: none;
 }
