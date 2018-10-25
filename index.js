@@ -6,7 +6,7 @@ app.get('/', function(req,res) {
     res.render("index.html");
 });
 
-var server = app.listen(process.env.PORT || port,process.env.IP,function() {
+var server = app.listen(process.env.PORT || 5000,process.env.IP,function() {
     console.log("server listening");
 });
 

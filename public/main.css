@@ -5,27 +5,48 @@
     border: 2px solid black;
 }
 .content {
-    width: 90%;
+    width: 95%;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 0;
     height: 70%;
     background-color: aliceblue;
 }
 .input {
-    width: 90%;
-    margin: auto;
-    padding-top: 5px; 
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 40px 20px 40px;
+    background-color: lavender;
+    margin:0;
+    text-align: center;
 }
 #out {
     padding: 20px 0px 5px 8px;
     text-align: left;
     font-size: 15px;
     font-family: 'Open Sans', sans-serif;
-    overflow-y: scroll;
     height: 90%;
+    overflow-y: scroll;
+
+}
+#typing {
+    height: 10%;
+    font-size: 12px;
+    color: grey;
+}
+.othuser {
+    border-radius: 5px;
+    width: 45%;
+}
+.user {
+    border-radius: 5px;
+    width: 45%;
+    left: 52%;
 }
 #send {
-    width: 100%;
+    width: 30%;
     background-color: cadetblue;
     border: 1px solid cadetblue;
     color: white;
@@ -35,7 +56,7 @@
     margin-bottom: 5px;
 }
 #name,#message {
-    width: 100%;
+    width: 50%;
     font-size: 17px;
     margin-bottom: 5px;
 }

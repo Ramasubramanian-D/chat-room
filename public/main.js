@@ -19,12 +19,15 @@ send.addEventListener('click',function() {
     message.value = "";
 });
 
-message.addEventListener('change',function() {
+message.addEventListener('keypress',function() {
     socket.emit('typing',{name: name.value});
 });
 
 socket.on('message',function(data) {
-    output.innerHTML += '<p><strong>' + data.name + ': </strong> ' + data.message + '</p>';
+    if(data.id == socket.id) 
+        output.innerHTML += '<div class="card user light-green lighten-4"><div class="card-content"><b> You: </b><br/> ' + data.message + '</div></div>';
+    else 
+        output.innerHTML += '<div class="card othuser"><div class="card-content"><b>' + data.name + ': </b><br/>  ' + data.message + '</div></div>';
     typing.innerHTML = '';
 });
 
