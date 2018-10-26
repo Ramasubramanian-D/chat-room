@@ -1,3 +1,5 @@
+// making socket connection
+
 var socket = io.connect('/');
 
 // getting the variables
@@ -7,6 +9,9 @@ var s = document.getElementById('name'),
     message = document.getElementById('message'),
     send = document.getElementById('send'),
     type = document.getElementById('typing');
+
+// adding DOM events
+
 send.addEventListener('click',function() {
     send.style.border = "1px solid cadetblue";
     socket.emit('message', {
@@ -24,6 +29,8 @@ message.addEventListener('keyup',function() {
     socket.emit('nottyping');
 });
 
+// adding socket events 
+
 socket.on('message',function(data) {
     if(data.id == socket.id) 
         output.innerHTML += '<div class="card user light-green lighten-4"><div class="card-content"><b> You: </b><br/> ' + data.message + '</div></div>';
@@ -40,3 +47,4 @@ socket.on('nottyping',function() {
         type.innerHTML = '';
     },300);
 });
+

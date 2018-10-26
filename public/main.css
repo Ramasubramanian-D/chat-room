@@ -60,3 +60,7 @@ strong {
 textarea {
     resize: none;
 }
+.dropdown-content{
+    width: max-content !important;
+    height:auto !important;
+ }
