@@ -1,3 +1,6 @@
+body {
+    font-family:'Roboto', sans-serif;
+}
 .mainScreen {
     height: 100vh;
     width: 100vw;
@@ -6,16 +9,16 @@
     width: 100%;
     margin: auto;
     margin-top: 0;
-    height: 80%;
+    height: 80vh;
     background-color: aliceblue;
 }
 .input {
     width: 100%;
+    height: 20vh;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 20px 10px 0px 10px;
-    background-color: lavender;
     margin:0;
     text-align: center;
 }
@@ -30,16 +33,20 @@
 #typing {
     height: 10%;
     font-size: 12px;
-    color: grey;
+    color: white;
+    font-weight: 600;
+    background-color: #aca5a5;
 }
 .othuser {
     border-radius: 5px;
-    width: 45%;
+    background-color: white !important;
+    width: 40%;
 }
 .user {
     border-radius: 5px;
-    width: 45%;
-    left: 52%;
+    background-color: #ccff90 !important;
+    width: 40%;
+    left: 55%;
 }
 #send {
     background-color: cadetblue;
@@ -50,15 +57,17 @@
     margin-bottom: 5px;
 }
 #name,#message {
-    width: 93%;
+    width: 95%;
     font-size: 17px;
-    margin-bottom: 5px;
-    background-color: white;
+    color: white;
     padding: 2px 7px 2px 7px;
-    border-radius: 7px;
+    border: none;
+    border-radius: 5px; 
 }
-strong {
-    color: darkslategray;
+.userfooter {    
+    padding-left: 20px !important;
+    text-align: left !important;
+    background-color: #3d3d3d !important;
 }
 textarea {
     resize: none;
@@ -66,4 +75,28 @@ textarea {
 .dropdown-content{
     width: max-content !important;
     height:auto !important;
+}
+ .darkMode {
+    background-color: #535151;
+}
+ .contentTheme {
+    background-color: #888383 !important;
  }
+ .textclr {
+     color: white !important;
+ }
+
+/* scrollbar customization*/
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

@@ -1,8 +1,10 @@
 <html>
     <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>chat room</title>
         <link rel="stylesheet" type="text/css" href="/main.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -10,30 +12,32 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
     </head>
     <body>
-        <div id="onlineUsers" class="modal">
-            <div class="modal-content">
-                <ul id="online" class="collection"></ul>
+        <div id="onlineUsers" class="modal modal-fixed-footer">
+            <div class="modal-content darkMode">
+                <ul id="online" class="collection textclr contentTheme" style="border:none;"></ul>
             </div>
-            <div class="modal-fixed-footer">
-                <h5>users online : <span id="no"></span></h5>
+            <div class="modal-footer userfooter">
+                <h5 class="textclr">users online : <span id="no"></span></h5>
             </div>
         </div>
+
         <div id="getName" class="modal">
-            <div class="modal-content" style="text-align:center;">
-                <h4>Welcome to the chat room</h4>
-                <input id="name" type="text" placeholder="Name">
+            <div class="modal-content darkMode" style="text-align:center;">
+                <h4 class="textclr">Welcome to the chat room</h4>
+                <input id="name" class="contentTheme" type="text" placeholder="Name">
                 <button id="gn" class="waves-effect waves-light btn">Ok</button>
             </div>
         </div>
+
         <div class="mainScreen">
-            <div class="content">
+            <div class="content darkMode">
                 <div id="out"></div>
                 <div id="typing"></div>
             </div>
-            <div class="input">
+            <div class="input darkMode">
                 <div class="row">
                     <div class="col s10" style="text-align:left;">
-                    <textarea class="materialize-textarea" id="message" placeholder="Message" ></textarea>
+                    <textarea class="materialize-textarea contentTheme" id="message" placeholder="Message" ></textarea>
                         <br/>
                     </div>
                     <div class="col s1">
@@ -41,8 +45,8 @@
                     </div>
                     <div class="col s1">  
                         <ul id="more" class="dropdown-content">
-                            <li><a id="userList" href="#onlineUsers" class="modal-trigger">Users Online</a></li>
-                            <li><a href="/about">About the developer</a></li>
+                            <li class="contentTheme"><a id="userList" href="#onlineUsers" class="modal-trigger textclr">Users Online</a></li>
+                            <li class="contentTheme"><a href="/about" class="textclr">About the developer</a></li>
                         </ul>
                         <a id="send" class="btn-floating btn-flat btn-large waves-light dropdown-button" data-activates="more" style="background-color:transparent;border:none;"><i class="material-icons">more_vert</i></a> 
                     </div>
@@ -55,6 +59,10 @@
                 $('.modal').modal();
                 $('#getName').modal({dismissible: false});
                 $('#getName').modal('open');
+            });
+            $('.dropdown-button').dropdown({
+                belowOrigin: false,
+                alignment: 'right'
             });
         </script>
     </body>

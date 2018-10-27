@@ -48,5 +48,4 @@ io.on('connection',function(socket) {
 });
 io.on('disconnection',function() {
     pplonline--;
-
 });

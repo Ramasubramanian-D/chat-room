@@ -19,7 +19,8 @@ var s = document.getElementById('name'),
 gn.addEventListener('click',function() {
     if(s.value !== '') {
         socket.emit('name', {
-            name: s.value
+            name: s.value,
+            id: socket.id
         });
         $('#getName').modal('close');
     } else {
@@ -52,9 +53,10 @@ userlist.addEventListener('click',function() {
 
 socket.on('message',function(data) {
     if(data.id == socket.id) 
-        output.innerHTML += '<div class="card user light-green lighten-4"><div class="card-content"><b> You: </b><br/> ' + data.message + '</div></div>';
+        output.innerHTML += '<div class="card user lighten-4"><div class="card-content"><b style="font-size:16px;color:#3e508a;"> You: </b><br/> &emsp;' + data.message + '</div></div>';
     else 
-        output.innerHTML += '<div class="card othuser"><div class="card-content"><b>' + data.name + ': </b><br/>  ' + data.message + '</div></div>';
+        output.innerHTML += '<div class="card othuser "><div class="card-content"><b style="font-size:16px;color:#521616;">' + data.name + ': </b><br/> &emsp;' + data.message + '</div></div>';
+    output.scrollTop = output.scrollHeight;
 });
 
 socket.on('typing',function(data) {
@@ -64,12 +66,12 @@ socket.on('typing',function(data) {
 socket.on('nottyping',function() {
     setTimeout(function() {
         type.innerHTML = '';
-    },300);
+    },600);
 });
 
 socket.on('getUsers',function(data) {
     data.users.forEach(element => {
-        online.innerHTML += '<li class="collection-item">' + element + '</li>';
+    online.innerHTML += '<li class="collection-item contentTheme" style="border:none;border-bottom:1px solid black;font-size: 18px;"> <i class="material-icons" style="color:#b2ff59;font-size: 16px;"> fiber_manual_record</i> &emsp;'+ element + '</li>';
     });
     no.textContent = data.noOfUsers;
 });
