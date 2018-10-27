@@ -19,8 +19,7 @@ var s = document.getElementById('name'),
 gn.addEventListener('click',function() {
     if(s.value !== '') {
         socket.emit('name', {
-            name: s.value,
-            id: socket.id
+            name: s.value
         });
         $('#getName').modal('close');
     } else {
