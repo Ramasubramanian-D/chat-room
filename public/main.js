@@ -22,6 +22,9 @@ gn.addEventListener('click',function() {
             name: s.value
         });
         $('#getName').modal('close');
+        socket.emit('newUser',{
+            name: s.value
+        });
     } else {
         alert('Enter a valid name');
     }
@@ -63,7 +66,7 @@ socket.on('message',function(data) {
 });
 
 socket.on('typing',function(data) {
-    type.innerHTML = '<p style="font-size: 14px;padding-left: 1%;"><em>' + data.name + ' is typing.</em></p>';
+    type.innerHTML = '<p style="font-size: 16px;padding-left: 1%;"><em>' + data.name + ' is typing.</em></p>';
 });
 
 socket.on('nottyping',function() {
@@ -80,8 +83,12 @@ socket.on('getUsers',function(data) {
     no.textContent = data.noOfUsers;
 });
 
-socket.on('disconnected', function() {
-    console.log("client");
+socket.on('newUser',function(data) {
+    output.innerHTML += '<p style="color:white;font-size:14px;font-weight:300;text-align:center;"><em>'+ data.name +' joined the chat. Say hi ! </em></p>'
+});
+
+socket.on('disconnect', function() {
+    alert("u are qutiing");
     socket.emit('deleteUser',{
     name: s.name
     });

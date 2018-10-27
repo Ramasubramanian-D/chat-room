@@ -24,6 +24,10 @@ io.on('connection',function(socket) {
         pplonline ++;
     });
 
+    socket.on('newUser',function(data) {
+        socket.broadcast.emit('newUser',data);
+    });
+
     socket.on('message', function(data) {
         io.sockets.emit('message',data);
     });
@@ -42,18 +46,14 @@ io.on('connection',function(socket) {
             noOfUsers:  pplonline
         });
     });
-    socket.on('disconnect', function(data) {
-        console.log("disconnected");
-        nameList.forEach(function (ele,i) {
-            if(ele === data.name) {
-                nameList.splice(i,1);
-            }
-        });
+    socket.on('disconnected', function() {
+        console.log('Got disconnect!');
         pplonline--;
     });
-    socket.on('userDelete',function(data) {
-        console.log("user");
-        
+    socket.on('deleteUser', function(data) {
+        var i = nameList.indexOf(data.name);
+        nameList.splice(i,1);
+        console.log("done");
     });
 });
  
