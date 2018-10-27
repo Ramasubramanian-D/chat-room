@@ -8,9 +8,24 @@ var output = document.getElementById('out');
 var s = document.getElementById('name'),
     message = document.getElementById('message'),
     send = document.getElementById('send'),
+    userlist = document.getElementById('userList'),
+    gn = document.getElementById('gn'),
+    online = document.getElementById('online'),
+    no =document.getElementById('no'),
     type = document.getElementById('typing');
 
 // adding DOM events
+
+gn.addEventListener('click',function() {
+    if(s.value !== '') {
+        socket.emit('name', {
+            name: s.value
+        });
+        $('#getName').modal('close');
+    } else {
+        alert('Enter a valid name');
+    }
+});
 
 send.addEventListener('click',function() {
     send.style.border = "1px solid cadetblue";
@@ -25,10 +40,14 @@ send.addEventListener('click',function() {
 message.addEventListener('keypress',function() {
     socket.emit('typing',{name: s.value});
 });
+
 message.addEventListener('keyup',function() {
     socket.emit('nottyping');
 });
 
+userlist.addEventListener('click',function() {
+    socket.emit('getUsers');
+});
 // adding socket events 
 
 socket.on('message',function(data) {
@@ -46,5 +65,12 @@ socket.on('nottyping',function() {
     setTimeout(function() {
         type.innerHTML = '';
     },300);
+});
+
+socket.on('getUsers',function(data) {
+    data.users.forEach(element => {
+        online.innerHTML += '<li class="collection-item">' + element + '</li>';
+    });
+    no.textContent = data.noOfUsers;
 });
 

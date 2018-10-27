@@ -15,11 +15,19 @@ var server = app.listen(process.env.PORT || 5000,process.env.IP,function() {
 
 var io = socket(server);
 var pplonline = 0;
+var nameList = [];
+
 io.on('connection',function(socket) {
     console.log("user connected");
-    pplonline++;
+    
+    socket.on('name', function(data) {
+        nameList[pplonline] = data.name;
+        pplonline ++;
+        console.log(pplonline);
+        console.log(nameList);
+    });
+
     socket.on('message', function(data) {
-        console.log("in server");
         io.sockets.emit('message',data);
     });
 
@@ -30,7 +38,15 @@ io.on('connection',function(socket) {
     socket.on('nottyping', function() {
         socket.broadcast.emit('nottyping');
     });
+    
+    socket.on('getUsers', function() {
+        socket.emit('getUsers', {
+            users:  nameList,
+            noOfUsers:  pplonline
+        });
+    });
 });
 io.on('disconnection',function() {
     pplonline--;
+
 });
