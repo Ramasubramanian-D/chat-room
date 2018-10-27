@@ -19,12 +19,9 @@ var nameList = [];
 
 io.on('connection',function(socket) {
     console.log("user connected");
-    
     socket.on('name', function(data) {
         nameList[pplonline] = data.name;
         pplonline ++;
-        console.log(pplonline);
-        console.log(nameList);
     });
 
     socket.on('message', function(data) {
@@ -45,7 +42,18 @@ io.on('connection',function(socket) {
             noOfUsers:  pplonline
         });
     });
+    socket.on('disconnect', function(data) {
+        console.log("disconnected");
+        nameList.forEach(function (ele,i) {
+            if(ele === data.name) {
+                nameList.splice(i,1);
+            }
+        });
+        pplonline--;
+    });
+    socket.on('userDelete',function(data) {
+        console.log("user");
+        
+    });
 });
-io.on('disconnection',function() {
-    pplonline--;
-});
+ 

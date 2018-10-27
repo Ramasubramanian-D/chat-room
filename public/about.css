@@ -1,0 +1,32 @@
+body {
+    font-family:'Roboto', sans-serif;
+}
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-y: hidden;
+    overflow-x: hidden; 
+    background-color: #535151;
+}
+.about {
+    padding: 10px 10px 10px 10px; 
+    width: 50vw;
+    height: 50vh;
+    margin: auto !important;
+    margin-top: 25vh !important;
+    border-radius: 7px;
+    box-shadow: 10px;
+    color: white;
+    background-color: #969696 !important;
+}
+.linksDiv {
+    text-align: center;
+    padding-top: 8vh;
+}
+.circle {
+    width: 4vw;
+    height: 4vw;
+}

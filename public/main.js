@@ -29,12 +29,16 @@ gn.addEventListener('click',function() {
 
 send.addEventListener('click',function() {
     send.style.border = "1px solid cadetblue";
-    socket.emit('message', {
-        id: socket.id,
-        name: s.value,
-        message: message.value
-    });
-    message.value = "";
+    if(message.value !== '') {
+        socket.emit('message', {
+            id: socket.id,
+            name: s.value,
+            message: message.value
+        });
+        message.value = "";
+    } else {
+        alert("You cannot send an empty message");
+    }
 });
 
 message.addEventListener('keypress',function() {
@@ -69,9 +73,17 @@ socket.on('nottyping',function() {
 });
 
 socket.on('getUsers',function(data) {
+    online.innerHTML = '';
     data.users.forEach(element => {
     online.innerHTML += '<li class="collection-item contentTheme" style="border:none;border-bottom:1px solid black;font-size: 18px;"> <i class="material-icons" style="color:#b2ff59;font-size: 16px;"> fiber_manual_record</i> &emsp;'+ element + '</li>';
     });
     no.textContent = data.noOfUsers;
+});
+
+socket.on('disconnected', function() {
+    console.log("client");
+    socket.emit('deleteUser',{
+    name: s.name
+    });
 });
 
