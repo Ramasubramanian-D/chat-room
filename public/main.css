@@ -85,7 +85,30 @@ textarea {
  .textclr {
      color: white !important;
  }
+.btnSize {
+    height: 5vw !important;
+    width: 5vw !important;
+}
+.btn-large i {
+    font-size: 3vw !important;
+}
+.btn-floating.btn-large i {
+    line-height: 5vw !important;
+}
+/* media queries */
 
+@media only screen and (max-width: 600px) {
+    .btnSize {
+        height:12vw !important;
+        width:12vw !important;
+    }
+    .btn-floating.btn-large i {
+        line-height: 11vw !important;
+    }
+    .btn-large i {
+        font-size: 7vw !important;
+    }    
+}
 /* scrollbar customization*/
 
 ::-webkit-scrollbar {
