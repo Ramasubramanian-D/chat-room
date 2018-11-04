@@ -85,13 +85,13 @@ textarea {
     width: max-content !important;
     height:auto !important;
 }
- .darkMode {
+.darkMode {
     background-color: #535151;
 }
- .contentTheme {
+.contentTheme {
     background-color: #888383 !important;
  }
- .textclr {
+.textclr {
      color: white !important;
  }
 .btnSize {
