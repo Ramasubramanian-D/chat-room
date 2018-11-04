@@ -20,8 +20,12 @@ var nameList = [];
 io.on('connection',function(socket) {
     console.log("user connected");
     socket.on('name', function(data) {
-        nameList[pplonline] = data.name;
+        nameList.push({
+            name: data.name,
+            id: data.id
+        });
         pplonline ++;
+        console.log(nameList);
     });
 
     socket.on('newUser',function(data) {
@@ -46,14 +50,14 @@ io.on('connection',function(socket) {
             noOfUsers:  pplonline
         });
     });
-    socket.on('disconnected', function() {
-        console.log('Got disconnect!');
-        pplonline--;
-    });
     socket.on('deleteUser', function(data) {
-        var i = nameList.indexOf(data.name);
-        nameList.splice(i,1);
-        console.log("done");
+        for(var i = 0;i<pplonline;i++) {
+            if(data.id == nameList[i].id) {
+                nameList.splice(i,1);
+                break;
+            }
+        }
+        console.log(nameList);
     });
 });
- 
+

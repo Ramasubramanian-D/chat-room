@@ -19,7 +19,8 @@ var s = document.getElementById('name'),
 gn.addEventListener('click',function() {
     if(s.value !== '') {
         socket.emit('name', {
-            name: s.value
+            name: s.value,
+            id: socket.id
         });
         $('#getName').modal('close');
         socket.emit('newUser',{
@@ -55,6 +56,17 @@ message.addEventListener('keyup',function() {
 userlist.addEventListener('click',function() {
     socket.emit('getUsers');
 });
+
+$(document).ready(function()
+{
+    $(window).bind("beforeunload", function() { 
+        socket.emit('deleteUser', {
+            id: socket.id
+        });
+        return confirm("Do you really want to close?"); 
+    });
+});
+
 // adding socket events 
 
 socket.on('message',function(data) {
@@ -74,23 +86,20 @@ socket.on('nottyping',function() {
         type.innerHTML = '';
     },600);
 });
+var usersAreHere ;
 
 socket.on('getUsers',function(data) {
     online.innerHTML = '';
     data.users.forEach(element => {
-    online.innerHTML += '<li class="collection-item contentTheme" style="border:none;border-bottom:1px solid black;font-size: 18px;"> <i class="material-icons" style="color:#b2ff59;font-size: 16px;"> fiber_manual_record</i> &emsp;'+ element + '</li>';
+    online.innerHTML += '<li class="collection-item contentTheme" style="border:none;border-bottom:1px solid black;font-size: 18px;"> <i class="material-icons" style="color:#b2ff59;font-size: 16px;"> fiber_manual_record</i> &emsp;'+ element.name + '</li>';
     });
     no.textContent = data.noOfUsers;
+    usersAreHere = data;
 });
 
 socket.on('newUser',function(data) {
     output.innerHTML += '<p style="color:white;font-size:14px;font-weight:300;text-align:center;"><em>'+ data.name +' joined the chat. Say hi ! </em></p>'
 });
 
-socket.on('disconnect', function() {
-    alert("u are qutiing");
-    socket.emit('deleteUser',{
-    name: s.name
-    });
-});
+
 
